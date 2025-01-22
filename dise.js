@@ -1,38 +1,77 @@
-function lesjoueur(){
-    let nbr;
-    do{ 
-         nbr= prompt("Combien de joueur voulez vous ajouter? ");
-        if(isNaN(nbr) || nbr< 2 ){ 
-        alert("le nombre de joueur doit etre supétieur ou égale à 2");
+let nbr=prompt("Combien de joueurs participeront au jeu");
+  if(nbr<2 || isNaN(nbr)){
+    do{
+       alert("Erreur");
+       nbr=prompt("Combien de joueurs participeront au jeu");
+       
+    }while(nbr<2 || isNaN(nbr));
+    }else{
+        function Scores(nombre){
+      let g=0,p=0,k=0;
+     for(let i=1;i<=nbr;i++){
+    let somme=0;
+     for(let j=0;j<10;j++){ 
+       somme+=somme+Math.floor(Math.random()*(6-1)+1);
         }
-    }
-    while(isNaN(nbr) || nbr< 2);
-    return nbr;
+        if(somme>g){
+         p=i;
+        g=somme;
+         }    
+    console.log("Joueur "+i+" : "+somme+" points");
+                
+            }  
+     console.log("Le joueur "+p+" a gagne avec "+g+" points");
+        }
+        Scores(nbr);
+    function message(){
+        var avis =prompt("Voulez-vous jouer un nouvelle partie");
+         if(avis==1){
+            do{
+                let nbr=prompt("Combien de joueurs participeront au jeu");
+                if(nbr<2){
+                  do{
+              alert("Erreur");
+      nbr=prompt("Combien de joueurs participeront au jeu");       
+         }while(nbr<2)
+                  }else{
+            function Scores(nombre){
+        let g=0,p=0,k=0;
+         for(let i=1;i<=nbr;i++){
+          let somme=0;
+                 for(let j=0;j<10;j++){ 
+                somme+=somme+Math.floor(Math.random()*(5-1)+1);
+               }
+            if(somme>g){
+           p=i;
+           g=somme;
+         }
+         if(g==somme)
+         k++;                     
+         console.log("Joueur "+i+" : "+somme+" points");
+                 }
+           if(k<=1)
+      console.log("Le joueur "+p+" a gagne avec "+g+" points");
+                           
+      }
+              
+       Scores(nbr);
+              
+                      
+                  function message(){
+                      var continuer =confirm("Voulez-vous jouer un nouvelle partie");
+                     if(continuer==1){
+                          return -1;
+                     }else{
+                         alert("Bye bye");
+           }
+                 }
+                 message();
+            } 
+        }
+        while(avis!=1)
+       }else{
+           alert("Bye bye");
+       }
+   }
+   message();
 }
-let joueurs= lesjoueur();
-console.log("le nombre de joueur est:", joueurs);
-
-  function generernombre() {
-    return Math.floor(Math.random() * 6) + 1;
-  }
-    let scores= new Array(joueurs);
-  
-  function Tours(_joueur){
-    let resultat;
-    for(let tour= 0; tour<10; tour++){
-        for(let joueur= 0; joueur<joueurs; joueur++){
-             resultat= generernombre();
-             scores[joueur]+= resultat;
-        }
-    }
-    return scores;
-  } 
-
-  
-
-
-
-
-
-
-
